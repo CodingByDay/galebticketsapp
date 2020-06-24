@@ -26,7 +26,7 @@ def create(response):
             t.save()
             return HttpResponse("<h1>Uspesno ste prijavili problem. Stice vam mail kada problem bude resen. Hvala. </h1>")
         # push to database.
-          
+          # mailing. Add a 
 # RANDOM USEFULL COMMENT            
     else:
         form = CreateNewTicket()
