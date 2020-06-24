@@ -27,7 +27,7 @@ class tickets(models.Model):
     problem = models.CharField(max_length=1000)
     contact_number = models.CharField(max_length=200)
     status = models.BooleanField(default=False)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="authorname", null=True)
     executive = models.ForeignKey(executives, on_delete=models.CASCADE, blank=True, null=True)
 
 

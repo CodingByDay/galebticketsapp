@@ -1,9 +1,10 @@
 {% extends 'main/base.html' %} {% block title %}Create new ticket{% endblock %} {% block content %}
 <center>Posaljite nam ticket.</center>
+{% load crispy_forms_tags %}
 <div class="form">
     <form method="POST" action="/create/" class="form-group">
 
-        {% csrf_token %} {{form.as_ul}}
+        {% csrf_token %} {{form|crispy}}
         <button type="submit" , name="save" , class="btn btn-success">Create new.</button>
     </form>
     </form>
