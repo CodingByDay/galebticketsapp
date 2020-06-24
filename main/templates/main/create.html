@@ -1,8 +1,12 @@
-{% extends 'main/base.html' %} {% block title %}Create new ticket{% endblock %} {% block content %} Create ticket.
+{% extends 'main/base.html' %} {% block title %}Create new ticket{% endblock %} {% block content %}
+<center>Posaljite nam ticket.</center>
+<div class="form">
+    <form method="POST" action="/create/" class="form-group">
 
-<form method="POST" action="/create/">
-    {% csrf_token %} {{form.as_ul}}
-    <button type="submit" , name="save">Create new.</button>
-
-</form>
+        {% csrf_token %} {{form.as_ul}}
+        <button type="submit" , name="save" , class="btn btn-success">Create new.</button>
+    </form>
+    </form>
+</div>
+</div>
 {% endblock %}

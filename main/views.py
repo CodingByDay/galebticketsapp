@@ -18,11 +18,13 @@ def create(response):
 
         if form.is_valid():            
             location = form.cleaned_data["location"]
+            company = form.cleaned_data["company"]
             serial_number = form.cleaned_data["serial_number"]
             problem = form.cleaned_data["problem"]
-            t = tickets(location=location, serial_number=serial_number, problem=problem)
+            contact_number = form.cleaned_data["contact_number"]
+            t = tickets(location=location, company=company, serial_number=serial_number, problem=problem, contact_number=contact_number)
             t.save()
-         
+            return HttpResponse("<h1>Uspesno ste prijavili problem. Stice vam mail kada problem bude resen. Hvala. </h1>")
         # push to database.
           
 # RANDOM USEFULL COMMENT            
