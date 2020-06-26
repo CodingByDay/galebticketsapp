@@ -47,7 +47,9 @@ class tickets(models.Model):
      #   pass
 
     #send mail
-
+#for ticket in tickets:
+ #   if tickets.status == True:
+        
 
 
     

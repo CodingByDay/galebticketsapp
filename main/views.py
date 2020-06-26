@@ -5,8 +5,8 @@ from .forms import CreateNewTicket
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 from django.contrib.auth import login,logout, authenticate
-
-
+from django.contrib import messages
+from django.core.mail import send_mail
 
 
 
@@ -33,9 +33,16 @@ def create(response):
             t = tickets(name=name, location=location, company=company, serial_number=serial_number, problem=problem, contact_number=contact_number)
             t.save()
             response.user.authorname.add(t)
-            return HttpResponse("<h1>Uspesno ste prijavili problem. Stice vam mail kada problem bude resen. Hvala. </h1>")
-        # push to database.
-          # mailing. Add a 
+            messages.success(response, "Uspesno ste prijavili tiket. Na vas email ce stici obavestenje.")
+
+            # send an emmail
+            send_mail(
+               'Otvoren tiket', # Mail title
+                problem, # massage
+               'jankojovicic351@gmail.com', # From
+               ['jankojovicicwork@gmail.com'] # To email
+                )
+          
 # RANDOM USEFULL COMMENT            
     else:
         form = CreateNewTicket()

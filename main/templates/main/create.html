@@ -1,5 +1,7 @@
 {% extends 'main/base.html' %} {% block title %}Create new ticket{% endblock %} {% block content %}
+<h1><a href="{% url 'logout'%}" id="logout">Odjava</a></h1>
 <center>Posaljite nam ticket.</center>
+ 
 {% load crispy_forms_tags %}
 <div class="form">
     <form method="POST" action="/create/" class="form-group">
@@ -8,6 +10,9 @@
         <button type="submit" , name="save" , class="btn btn-success">Create new.</button>
     </form>
     </form>
+     {% for message in messages %}
+      <p>{{message}}</p>
+     {% endfor %}
 </div>
 </div>
 {% endblock %}
