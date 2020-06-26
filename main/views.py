@@ -1,17 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import executives, devices, tickets, User
 from .forms import CreateNewTicket
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+from django.contrib.auth import login,logout, authenticate
 
-def index(response, id):
-    ls = tickets.objects.get(id=id)
-    return render(response, "main/list.html", {"ls":ls})
+
+
+
+
 
 
 def home(response):
     return render(response, "main/home.html", {})
 
+ 
+
+# Restrict acces to unauthorized users
+@login_required(login_url="../login/")
 def create(response):
     if response.method == "POST":
         form = CreateNewTicket(response.POST)
@@ -35,3 +42,6 @@ def create(response):
     return render(response, "main/create.html", {"form":form})
 
 
+def logoutUser(response):
+    logout(response)
+    return redirect('../login/')

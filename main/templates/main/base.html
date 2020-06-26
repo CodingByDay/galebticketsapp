@@ -32,6 +32,13 @@
         form {
             text-align: center;
         }
+        
+        #messages {
+            text-align: center;
+            text-decoration: solid;
+            color: black;
+        }
+        
     </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -47,8 +54,9 @@
 <body>
 
     <div class="sidenav">
-        <a href="/">Home</a>
-        <a href="/create">Create</a>
+        <a href="/">O nama</a>
+        <a href="create/">Posalji tiket</a>
+        <a href="{% url 'logout'%}">Odjava</a>
 
     </div>
 

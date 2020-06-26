@@ -2,21 +2,27 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 # Create your models here.
-
+#####################################################################
+#####################################################################
+#####################################################################
 # GPS OR PAYING DEVICE
+
 class devices(models.Model):
     name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
 
+
 # PERSON WHO IS GONNA PEFORM
 
 class executives(models.Model):
     executive = models.ForeignKey(User, on_delete=models.CASCADE)
 
+
     def __str__(self):
         return self.executive
+
 
 # TICKET MODEL
 class tickets(models.Model):
@@ -35,6 +41,13 @@ class tickets(models.Model):
     def __str__(self):
         return self.problem
 
-    
+# maybeh
+
+    #if tickets.status == True:
+     #   pass
+
+    #send mail
+
+
 
     
