@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 # Create your models here.
 #####################################################################
 #####################################################################
@@ -35,11 +36,19 @@ class tickets(models.Model):
     status = models.BooleanField(default=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="authorname", null=True)
     executive = models.ForeignKey(executives, on_delete=models.CASCADE, blank=True, null=True)
-
-
-
+    email_as_send = models.BooleanField(default=False)
+    
     def __str__(self):
         return self.problem
+
+    def save(self):
+        if self.status == True:
+           send_mail("subject", 
+           "Zatvoren ticket", 
+           "jankojovicic351@gmail.com", 
+           [self.author.email], fail_silently=False)
+        super().save()
+
 
 # maybeh
 
