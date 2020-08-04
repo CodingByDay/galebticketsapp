@@ -1,6 +1,9 @@
 {% extends 'main/base.html' %} {% block title %}Create new ticket{% endblock %} {% block content %}
-<h1><a href="{% url 'logout'%}" id="logout">Odjava</a></h1>
-<center>Posaljite nam ticket.</center>
+
+<center><h1>Posaljite nam ticket.</h1> </center>
+{% if user.is_authenticated %}
+ <center><h2>Dobrodosli {{ user.username }} !</h2></center>
+ {% endif %}
  
 {% load crispy_forms_tags %}
 <div class="form">

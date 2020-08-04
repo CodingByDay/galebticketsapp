@@ -5,54 +5,39 @@
 
 <head>
     <style type="text/css">
-        .sidenav {
-            height: 100%;
-            width: 160px;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow: hidden;
-            padding-top: 20px;
+        .navbar {
+            background-color: rgb(43, 43, 59);
         }
         
-        .sidenav a {
-            padding: 6px 8px 6px 16px;
+        .navbar .navbar-nav .nav-link {
+            color: #fff;
+        }
+        
+        .navbar .navbar-nav .nav-link:hover {
+            color: #fbc531;
+        }
+        
+        .navbar .navbar-nav .active>.nav-link {
+            color: #fbc531;
+        }
+        
+        footer a.text-light:hover {
+            color: #312f25!important;
             text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
         }
         
-        .sidenav a:hover {
-            color: #f1f1f1;
+        footer .cizgi {
+            border-right: 1px solid #19232a;
         }
         
-        form {
-            text-align: center;
+        @media (max-width: 992px) {
+            footer .cizgi {
+                border-right: none;
+            }
         }
         
-        #messages {
-            text-align: center;
-            text-decoration: solid;
-            color: black;
-        }
-
-        #logout {
-         margin-right: auto;
-         font-size: large;
-         color: black;
-        font-size: 25px;
-       
-        
-
-        } 
-        #home {
-         text-decoration: solid;
-         text-decoration: wavy;
-         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+        .footer {
+            background-color: rgb(44, 28, 28);
         }
     </style>
     <meta charset="utf-8">
@@ -67,34 +52,116 @@
 
 
 <body>
+    <header>
+        <!--- Navbar --->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" rel="home" href="#" title="Galeb">
+                    {% load static %}
 
-    <div class="sidenav">
-        <a href="/">O nama</a>
-        <a href="create/">Posalji tiket</a>
-      
+                    <img style="max-width:100px; margin-top: -7px;" src="{% static "imgs/logoOR.jpeg" %} ">
 
-    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nvbCollapse" aria-controls="nvbCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                    <div class="collapse navbar-collapse" id="nvbCollapse">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item pl-1">
+                                <a class="nav-link" href="#"><i class="fa fa-home fa-fw mr-1"></i></a>
+                </li>
+                <li class="nav-item active pl-1">
+                    <a class="nav-link" href="/"><i class="fa fa-th-list fa-fw mr-1"></i>O nama</a>
+                </li>
+                {% if user.is_authenticated %}
+
+
+                <li class="nav-item pl-1">
+                    <a class="nav-link" href={% url 'logout'%} " id="logout "><i class="fa fa-info-circle fa-fw mr-1 ">Logout</i></a>
+                </li>
+                {% else %}
+                <li class="nav-item pl-1 ">
+                    <a class="nav-link " href="login/ "><i class="fa fa-info-circle fa-fw mr-1 ">Login</i></a> {% endif %}
+                    <li class="nav-item pl-1 ">
+                        <a class="nav-link " href="# "><i class="fa fa-phone fa-fw fa-rotate-180 mr-1 "></i></a>
+                    </li>
+
+                    </ul>
+            </div>
+            </div>
+        </nav>
+        <!--# Navbar #-->
+    </header>
 
 
 
 
-    <div id="content" , name="content" , class="main">
-        <div class="row justify-content-center">
-            <div class="col-8">
+
+
+    <div id="content " , name="content " , class="main ">
+        <div class="row justify-content-center ">
+            <div class="col-8 ">
                 <center>
-                    <h1 class="mt-2">Ticketing aplikacija</h1>
+                    <h1 class="mt-2 ">Ticketing aplikacija</h1>
+
                 </center>
-                <hr class="mt-0 mb-4"> {% block content %} {% endblock %}
+                <hr class="mt-0 mb-4 "> {% block content %} {% endblock %}
 
 
             </div>
         </div>
     </div>
 
+    <!--- Footer --->
+    <footer>
+        <div class="jumbotron jumbotron-fluid bg-secondary p-4 mt-5 mb-0 ">
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 cizgi ">
+                        <div class="card bg-secondary border-0 ">
+                            <div class="card-body text-light text-center ">
+                                <h5 class="card-title text-white display-4 " style="font-size:30px ">Galeb doo</h5>
+                                <p class="d-inline lead ">Janko Jovicic © 2020<br>
+                                    <a href="# " class="text-light d-block lead ">Ticketing application</a>
+                                </p>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 cizgi ">
+                        <div class="card bg-secondary border-0 ">
+                            <div class="card-body text-center ">
+                                <h5 class="card-title text-white display-4 " style="font-size:30px ">Kontaktirajte nas</h5>
+                                <a class="text-light d-block lead " style="margin-left: -20px " href="# "><i class="fa fa-phone mr-2 "></i>+381643000385</a>
+                                <a class="text-light d-block lead " href="# "><i class="fa fa-envelope mr-2 "></i>ivam.arsenijevic@galeb.rs</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 ">
+                        <div class="card bg-secondary border-0 ">
+                            <div class="card-body text-center ">
+                                <h5 class="card-title text-white display-4 " style="font-size:30px ">Nadjite nas na socialnim mrezama.</h5>
+
+                                <a class="text-light " href="https://www.facebook.com/galebgroup/ "><i class="fa fa-facebook-square fa-fw fa-2x "></i></a>
+
+                                <a class="text-light " href="# "><i class="fa fa-twitter-square fa-fw fa-2x "></i></a>
+
+                                <a class="text-light " href="# "><i class="fa fa-instagram fa-fw fa-2x "></i></a>
+
+                                <a class="text-light " href="# "><i class="fa fa-linkedin fa-fw fa-2x "></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--# Footer #-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
 </body>
 
 
