@@ -16,7 +16,7 @@ def register(response):
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('username')
-            messages.success(response, 'Profil uspesno napravljen: ' + user)
+            messages.success(response, 'Profil uspešno napravljen: ' + user)
         return redirect('login/')    
     else:        
         form = RegisterForm()

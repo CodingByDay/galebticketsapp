@@ -1,11 +1,11 @@
 {% extends "main/base.html" %}
 
-{% block title %} Create an account{% endblock %}
+{% block title %} Napravi profil. {% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
     <form method="POST" class="form-group">
     {% csrf_token %}
         {{ form|crispy }}
-        <button type="submit" class="btn btn-success">Register</button>
+        <button type="submit" class="btn btn-success">Regitruj se.</button>
     </form>
 {% endblock %}

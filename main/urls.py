@@ -8,5 +8,6 @@ urlpatterns = [
     # Create new ticket.
     path("create/", views.create, name="create"),
     # Comment.
-    path("logout/", views.logoutUser)
+    path("logout/", views.logoutUser),
+  
 ]
