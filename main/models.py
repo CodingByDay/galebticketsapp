@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
+import datetime 
 # Create your models here.
 #####################################################################
 #####################################################################
@@ -19,10 +20,10 @@ class devices(models.Model):
 
 class executives(models.Model):
     executive = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    
 
     def __str__(self):
-        return self.executive
+        return str(self.executive)
 
 
 # TICKET MODEL
@@ -37,7 +38,7 @@ class tickets(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="authorname", null=True)
     executive = models.ForeignKey(executives, on_delete=models.CASCADE, blank=True, null=True)
     email_as_send = models.BooleanField(default=False)
-    date = models.DateTimeField()
+    
     
     def __str__(self):
         return self.problem
