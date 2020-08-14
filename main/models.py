@@ -15,6 +15,10 @@ class devices(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = 'Uredjaj'
+        verbose_name_plural = 'Uredjaji'    
+
 
 # PERSON WHO IS GONNA PEFORM
 
@@ -24,6 +28,10 @@ class executives(models.Model):
 
     def __str__(self):
         return str(self.executive)
+
+    class Meta:
+        verbose_name = 'Serviser'
+        verbose_name_plural = 'Serviseri'    
 
 
 # TICKET MODEL
@@ -38,8 +46,13 @@ class tickets(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="authorname", null=True)
     executive = models.ForeignKey(executives, on_delete=models.CASCADE, blank=True, null=True)
     email_as_send = models.BooleanField(default=False)
+    SLA = models.DateField()
     
-    
+    # Here is the question. They have yearly checkups of devices someone  buys. 
+    # They need to be notified 11 months from the last checkup.
+
+    last_checkup = models.DateField()
+
     def __str__(self):
         return self.problem
 
@@ -52,6 +65,9 @@ class tickets(models.Model):
         super().save()
 
 
+    class Meta:
+        verbose_name = 'Tiket'
+        verbose_name_plural = 'Tiketi'
 # maybeh
 
     #if tickets.status == True:
